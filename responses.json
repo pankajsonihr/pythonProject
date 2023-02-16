@@ -1,0 +1,19 @@
+{
+  "chat": [
+    {
+      "tag": "greetings",
+      "patterns": ["hello","how is it going?","hey", "hi", "good day","Greetings", "what's up?"],
+      "responses": ["Hello ", "Hey, I am here", "What can I  do for you?"]
+    },
+    {
+      "tag": "name",
+      "patterns": ["what is your name","what should I call you","whats your name","who are you","can you tell me about yourself"],
+      "responses": ["You can call me c p i n  buddy, I am here for group project","I am c p i n buddy", "I am your personal assistant"]
+    },
+    {
+      "tag": "age",
+      "patterns":["how old are you", "what is your age","tell me your age"],
+      "responses": ["I am brand new less than a year old"]
+    }
+  ]
+}

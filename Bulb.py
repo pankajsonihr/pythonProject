@@ -1,6 +1,6 @@
 import asyncio
 import os
-from random import randint
+from main import speak
 
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
@@ -101,6 +101,36 @@ def bulb_onoff(switch):
     loop = asyncio.get_event_loop()
     loop.run_until_complete(bulb_switch(switch))
     loop.stop()
-#if _name_ == '_main_':
-    #bulb_color_change("red")
-    #bulb_onoff(False)
+
+def bulb_commands(command):
+    if 'red' in command:
+        bulb_color_change('red')
+        speak()
+        #'on', 'off', 'red', '', '', '', '', '', '', ''
+    elif 'green' in command:
+        bulb_color_change('green')
+        speak()
+    elif 'blue' in command:
+        bulb_color_change('blue')
+        speak()
+    elif 'yellow' in command:
+        bulb_color_change('yellow')
+        speak()
+    elif 'magenta' in command:
+        bulb_color_change('magenta')
+        speak()
+    elif 'cyan' in command:
+        bulb_color_change('cyan')
+        speak()
+    elif 'black' in command:
+        bulb_color_change('black')
+        speak()
+    elif 'white' in command:
+        bulb_color_change('white')
+        speak()
+    elif 'on' in command:
+        bulb_onoff(True)
+        speak()
+    elif 'off' in command:
+        bulb_onoff(False)
+        speak()

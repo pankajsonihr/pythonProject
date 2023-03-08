@@ -8,8 +8,8 @@ import json
 import wikipedia
 import Wolframalpha as wf
 from News import *
-#from Jokes import *
 from Weather import *
+import Bulb as sb
 import randfacts
 
 engine = pyttsx3.init()
@@ -50,7 +50,7 @@ def parseCommand():
         print(f"The input speech was: {query}")
     except Exception as exception:
         print('I did not quite catch that')
-        speak('I did not quite catch that')
+        #speak('I did not quite catch that')
         print(exception)
         return "None"
     return query
@@ -106,10 +106,35 @@ if __name__ == '__main__':
             #weather info
             elif "temperature" in query:
                 speak(f"current temperature in sudbury is "+str(temp()))
+
+            elif "activate" and "bulb" in query:
+                if any(arg in ['on', 'off', 'red', 'green', 'blue', 'yellow', 'magenta', 'cyan', 'black', 'white'] for arg in query):
+                    sb.bulb_commands(query)
+                else:
+                #if "on" in query or "off" in query or "red" in query or
+                    speak("I think we didn't got you.")
+                    speak("say turn on to light the bulb, or say turn off to turn it off" )
+                    speak("to change color tell me the color name only")
+                    query = parseCommand().lower().split()
+                    sb.bulb_commands(query)
             #jokes
             #if "joke" or "jokes" in query:
             #    speak("Sure sir, get ready for some chukles")
             #    joke = joke()
             #    speak(joke[0])
             #    speak(joke[1])
-            speak("I am going to get some sleep, but don't worry, if you need something wake me, by saying hello buddy")
+            #speak("I am going to get some sleep, but don't worry, if you need something wake me, by saying hello buddy")
+
+            #responses thanks responses press the button and say some one on the door check that if there is a person on the door
+            # or there is any object in front of door and send email only if its a person.
+            #call emergency means send a text or email to a specific person.
+            #edit crontab to create an alarm at a specific time
+                #https://www.geeksforgeeks.org/crontab-in-linux-with-examples/
+                #https://crontab.guru/
+                #cron tab for alarms in python
+                #https://www.timeapi.io/swagger/index.html to check the current time or find something for free
+                # curl -X 'GET' \
+            #       'https://www.timeapi.io/api/Time/current/ip?ipAddress=54.39.163.38' \
+            #       -H 'accept: application/json'
+            #https://www.timeapi.io/api/Time/current/ip?ipAddress=54.39.163.38 to get the current time in weblink rather than curl
+

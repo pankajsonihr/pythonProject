@@ -1,7 +1,6 @@
 import asyncio
 import os
-from main import speak
-
+from Speak import speak
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
 from meross_iot.model.enums import OnlineStatus

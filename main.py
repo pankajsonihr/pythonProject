@@ -2,7 +2,6 @@ import random
 
 import speech_recognition as sr
 from datetime import datetime
-import pyttsx3
 import webbrowser
 import json
 import wikipedia
@@ -11,11 +10,9 @@ from News import *
 from Weather import *
 import Bulb as sb
 import randfacts
-
-engine = pyttsx3.init()
-engine.setProperty('rate',180)
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[1].id)
+import Youtube as yt
+from SMS import sendEmergencyText
+from Speak import speak
 activationWord = 'hello buddy' #single word
 responses = json.loads(open('responses.json').read())
 def search_wikipedia(query):
@@ -30,10 +27,6 @@ def search_wikipedia(query):
     print(wikiPage.title)
     wikiSummary = str(wikiPage.summary)
     return wikiSummary
-def speak(text, rate = 180):
-    engine.setProperty('rate', rate)
-    engine.say(text)
-    engine.runAndWait()
 
 def parseCommand():
     listener = sr.Recognizer()
@@ -104,7 +97,7 @@ if __name__ == '__main__':
                 speak("Did you know that, "+rngfacts)
 
             #weather info
-            elif "temperature" in query:
+            elif "weather" and "info" in query:
                 speak(f"current temperature in sudbury is "+str(temp()))
 
             elif "activate" and "bulb" in query:
@@ -117,6 +110,16 @@ if __name__ == '__main__':
                     speak("to change color tell me the color name only")
                     query = parseCommand().lower().split()
                     sb.bulb_commands(query)
+            elif "emergency" and "help" in query:
+                speak("Please tell me your emergency message. I will send that to emergency help.")
+                text = parseCommand().lower()
+                print(text)
+                sendEmergencyText(text)
+            elif "youtube" in query:
+                yt.play_on_youtube(query)
+            elif "stop" and "music" in query:
+                yt.close_song()
+                #this will stop the code right now we don't close it now on windows
             #jokes
             #if "joke" or "jokes" in query:
             #    speak("Sure sir, get ready for some chukles")

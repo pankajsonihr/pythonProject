@@ -13,6 +13,7 @@ import randfacts
 import Youtube as yt
 from SMS import sendEmergencyText
 from Speak import speak
+from Recipe import recipe_summary
 activationWord = 'hello buddy' #single word
 responses = json.loads(open('responses.json').read())
 def search_wikipedia(query):
@@ -120,24 +121,7 @@ if __name__ == '__main__':
             elif "stop" and "music" in query:
                 yt.close_song()
                 #this will stop the code right now we don't close it now on windows
-            #jokes
-            #if "joke" or "jokes" in query:
-            #    speak("Sure sir, get ready for some chukles")
-            #    joke = joke()
-            #    speak(joke[0])
-            #    speak(joke[1])
-            #speak("I am going to get some sleep, but don't worry, if you need something wake me, by saying hello buddy")
-
-            #responses thanks responses press the button and say some one on the door check that if there is a person on the door
-            # or there is any object in front of door and send email only if its a person.
-            #call emergency means send a text or email to a specific person.
-            #edit crontab to create an alarm at a specific time
-                #https://www.geeksforgeeks.org/crontab-in-linux-with-examples/
-                #https://crontab.guru/
-                #cron tab for alarms in python
-                #https://www.timeapi.io/swagger/index.html to check the current time or find something for free
-                # curl -X 'GET' \
-            #       'https://www.timeapi.io/api/Time/current/ip?ipAddress=54.39.163.38' \
-            #       -H 'accept: application/json'
-            #https://www.timeapi.io/api/Time/current/ip?ipAddress=54.39.163.38 to get the current time in weblink rather than curl
-
+            elif "recipe" in query:
+                speak("which recipe you are looking for?")
+                query = parseCommand().lower()
+                speak(recipe_summary(query))

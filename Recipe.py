@@ -1,28 +1,36 @@
 import requests
-api_key = 'b66210af2884486fb77a9d2ff8018932'
+
+# https://developer.edamam.com/
+
+APP_ID = "887fd8e8"
+APP_KEY = "49b8012954b66468d56af8a3b188ff4b"
+
+endpoint = "https://api.edamam.com/search"
+
 
 def search_recipes(recipe_name):
-    url = f'https://api.spoonacular.com/recipes/search?apiKey={api_key}&query={recipe_name}'
+    info = ""
+    # Set parameters for recipe search
+    params = {
+        "app_id": APP_ID,
+        "app_key": APP_KEY,
+        "q": recipe_name
+    }
 
-    response = requests.get(url)
-    results = response.json()['results']
-
-    return results
-
-def get_recipe_summary(recipe_name):
-    recipes = search_recipes(recipe_name)
-    if len(recipes) == 0:
-        print(f"No recipe found for {recipe_name}")
-        return
-
-    recipe_id = recipes[0]['id'] # use the ID of the first recipe found
-    url = f'https://api.spoonacular.com/recipes/{recipe_id}/information?apiKey={api_key}'
-
-    response = requests.get(url)
-    recipe_info = response.json()
-
-    print(recipe_info['summary'])
-
-# example usage
-def recipe_summary(recipe):
-    return f"{get_recipe_summary(recipe)}"
+    # Send GET request to API with search parameters
+    response = requests.get(endpoint, params=params)
+    # Check if response was successful
+    if response.status_code == 200:
+        # Extract recipe information from JSON response
+        data = response.json()
+        hits = data["hits"]
+        for hit in hits:
+            recipe = hit["recipe"]
+            info = "Recipe name is " + recipe["label"] + "I can only give the name of ingredient that you can use to cook it for more information you have to visit www.edamam.com"
+            for ingredient in recipe["ingredientLines"]:
+                info = info + ingredient + ", "
+            # So we don't get more than one recipe info.
+            break
+        return info
+    else:
+        return "Error: Could not retrieve recipe information."

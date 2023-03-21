@@ -3,17 +3,67 @@
     {
       "tag": "greetings",
       "patterns": ["hello","how is it going?","hey", "hi", "good day","Greetings", "what's up?"],
-      "responses": ["Hello ", "Hey, I am here", "What can I  do for you?"]
+      "responses": ["Hello ", "Hey, I am here", "What can I do for you?"]
     },
     {
       "tag": "name",
-      "patterns": ["what is your name","what should I call you","whats your name","who are you","can you tell me about yourself"],
-      "responses": ["You can call me c p i n  buddy, I am here for group project","I am c p i n buddy", "I am your personal assistant"]
+      "patterns": ["What is your name", "What should I call you", "What's your name", "Who are you", "Can you tell me about yourself", "Tell me your name", "What do people call you", "How should I address you", "Who am I talking to", "Introduce yourself please", "What's your given name", "What name were you given", "Do you have a name", "I'd like to know your name", "Could you tell me your name", "What are you called", "May I know your name", "Can you give me your name", "How can I call you", "Your name please", "Could you introduce yourself", "Can you let me know your name", "What's your given name", "Who am I speaking with", "Can you inform me of your name", "I want to know your name", "How do you prefer to be addressed", "Can you share your name with me", "Who are you exactly", "Please identify yourself", "What should I refer to you as"],
+      "responses": ["You can call me c p i n buddy, I am here for group project","I am c p i n buddy","I am your personal assistant","I'm here to assist you","You can address me as c p i n","My name is c p i n","c p i n is my name","I'm c p i n, at your service","You can call me c p i n, your personal assistant","I'm your personal assistant, c p i n","My purpose is to assist you, I'm c p i n","c p i n, always ready to help you","You can rely on me, c p i n","My name is c p i n, what can I help you with?","I am c p i n, your friend and assistant","I'm c p i n, ready to make your life easier","My job is to assist you, I'm c p i n","You can count on me, c p i n","My name is c p i n, how can I assist you?","I'm c p i n, your personal helper","c p i n is my name, what can I do for you?","I'm here to assist you, my name is c p i n","You can rely on me, I'm c p i n your assistant","My purpose is to help you, c p i n at your service","I'm c p i n, your virtual assistant","My name is c p i n, always here to help you","I'm your personal assistant, you can call me c p i n"]
     },
     {
       "tag": "age",
       "patterns":["how old are you", "what is your age","tell me your age"],
       "responses": ["I am brand new less than a year old"]
+    },
+    {
+      "tag": "weather",
+      "patterns": ["what is the weather like today?", "is it going to rain today?", "will it be sunny today?"],
+      "responses": ["I am not sure, let me check for you", "The current temperature is..."]
+    },
+    {
+      "tag": "jokes",
+      "patterns": ["tell me a joke", "make me laugh", "do you know any jokes"],
+      "responses": ["Why don't scientists trust atoms? Because they make up everything!", "Why did the tomato turn red? Because it saw the salad dressing!"]
+    },
+    {
+      "tag": "jokes_continue",
+      "patterns": ["tell me another one", "I want another joke", "more jokes please"],
+      "responses": ["Sure, here's another one: [insert joke here]."]
+    },
+    {
+      "tag": "jokes_stop",
+      "patterns": ["that's enough jokes", "stop with the jokes", "I don't want to hear any more jokes"],
+      "responses": ["Alright, let me know if you want to hear more jokes later."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["goodbye", "see you later", "bye", "talk to you soon"],
+      "responses": ["Goodbye! Have a great day", "Take care!"]
+    },
+    {
+      "tag": "thank_you",
+      "patterns": ["thank you", "thanks", "appreciate it"],
+      "responses": ["You're welcome!", "No problem, happy to help!", "Glad I could be of assistance."]
+    },
+    {
+      "tag": "food",
+      "patterns": ["what should I eat for dinner?", "I'm hungry", "what's your favorite food?", "can you recommend a restaurant?"],
+      "responses": ["How about trying a new cuisine tonight?", "I love sushi", "There is a great Italian restaurant nearby"]
+    },
+    {
+      "tag": "music",
+      "patterns": ["what music do you like?", "play some music for me", "what's your favorite song?"],
+      "responses": ["I love all kinds of music", "Sure, here is some music for you", "I really enjoy listening to classical music"]
+    },
+    {
+      "tag": "movies",
+      "patterns": ["what's a good movie to watch?", "have you seen any good movies lately?", "what's your favorite movie?"],
+      "responses": ["I heard the new Marvel movie is great", "I recently watched The Godfather and loved it", "My favorite movie is The Shawshank Redemption"]
+    },
+    {
+      "tag": "book",
+      "patterns": ["what book should I read next", "what's your favorite book", "can you recommend a good book"],
+      "responses": ["I love reading books by Stephen King", "My favorite book is 1984 by George Orwell", "I would recommend reading The Hunger Games"]
     }
-  ]
-}
+    ]
+  }

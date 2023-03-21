@@ -6,15 +6,16 @@ import webbrowser
 import json
 import wikipedia
 import Wolframalpha as wf
-from News import *
+import News as News
 from Weather import *
 import Bulb as sb
 import randfacts
 import Youtube as yt
 from SMS import sendEmergencyText
 from Speak import speak
-from Recipe import recipe_summary
+import Recipe as Recipe
 activationWord = 'hello buddy' #single word
+
 responses = json.loads(open('responses.json').read())
 def search_wikipedia(query):
     searchResults = wikipedia.search(query)
@@ -56,27 +57,42 @@ def json_response(tag):
            return item["responses"]
 
 
-#Main Loop
+def get_response(input_text):
+
+    for intent in responses['chat']:
+        for pattern in intent['patterns']:
+            if isinstance(pattern, list):
+                for p in pattern:
+                    if p.lower() in input_text.lower():
+                        return random.choice(intent['responses'])
+            else:
+                if pattern.lower() in input_text.lower():
+                    return random.choice(intent['responses'])
+    return None
+# Main Loop
 if __name__ == '__main__':
     speak('Starting c p i n buddy')
     while True:
-        #List Commands
+        # List Commands
         query = parseCommand().lower().split()
-        if "hi" and "buddy"in query:
-            speak('Activated')
-            query = parseCommand().lower().split()
-            if "your" and "name" in query:
+        if "hi" and "buddy" in query:
+            speak('Hi how I can help you.')
+
+            query = parseCommand().lower()
+            speak(get_response(query))
+            if "who" and "are" and "you" in query:
                 speak(random.choice(json_response("name")))
+
+            elif "who" and "are" and "you" in query:
+                speak(random.choice(json_response("name")))
+
+            elif "data" in query:
+                speak(News.return_date())
 
             elif "say" and "hello" in query:
                 speak(random.choice(json_response("greetings")))
-            #Navigation to open web browser
 
-            elif 'go' and 'to' in query:
-                speak('Opening..')
-                query = ''.join(query[2:])
-                webbrowser.open_new(query)
-            #wolframAlpha
+            # WolframAlpha this will compute math but not much effective in some cases. --Done
             elif query[0] == 'calculate' or query[0] == 'compute':
                 query = ''.join(query[1:])
                 speak('Computing')
@@ -85,43 +101,53 @@ if __name__ == '__main__':
                     speak(result)
                 except:
                     speak("Sorry I can't compute it.")
-            #will read some news for user
-            elif 'news' in query:
-                get_news= news()
-                speak(get_news[random.randint(0,len(get_news))])
-                speak(get_news[random.randint(0, len(get_news))])
 
-            #this will give random facts to user
+            # Will read top 3 news for user --Done
+            elif 'news' in query:
+                get_news = News.news()
+                speak(get_news)
+
+            # This will give random facts to user.  --Done
             elif "random" and "fact" in query:
                 speak("Sure sir, I will find some interesting facts for you.")
-                rngfacts =randfacts.get_fact()
+                rngfacts = randfacts.get_fact()
+                speak("Did you know that, "+rngfacts)
+            # This will give random facts to user if he said facts instead of fact.  --Done
+            elif "random" and "facts" in query:
+                speak("Sure sir, I will find some interesting facts for you.")
+                rngfacts = randfacts.get_fact()
                 speak("Did you know that, "+rngfacts)
 
-            #weather info
-            elif "weather" and "info" in query:
+            # Weather info is working perfectly. --Done
+            elif "weather" and "outside" in query:
                 speak(f"current temperature in sudbury is "+str(temp()))
 
+            # Bulb commands are working perfectly. --Done
             elif "activate" and "bulb" in query:
                 if any(arg in ['on', 'off', 'red', 'green', 'blue', 'yellow', 'magenta', 'cyan', 'black', 'white'] for arg in query):
                     sb.bulb_commands(query)
                 else:
-                #if "on" in query or "off" in query or "red" in query or
                     speak("I think we didn't got you.")
                     speak("say turn on to light the bulb, or say turn off to turn it off" )
                     speak("to change color tell me the color name only")
                     query = parseCommand().lower().split()
                     sb.bulb_commands(query)
+
+            # Emergency help perfectly working. --Done
             elif "emergency" and "help" in query:
                 speak("Please tell me your emergency message. I will send that to emergency help.")
                 text = parseCommand().lower()
                 print(text)
                 sendEmergencyText(text)
-            elif "youtube" in query:
-                yt.play_on_youtube(query)
-            elif "stop" and "music" in query:
-                yt.close_song()
-                #this will stop the code right now we don't close it now on windows
+
+            # Finally we figure our recipe part now. --Done
             elif "recipe" in query:
                 speak("which recipe you are looking for?")
                 query = parseCommand().lower()
-                speak(recipe_summary(query))
+                speak(Recipe.search_recipes(query))
+
+            elif "youtube" in query:
+                yt.play_on_youtube(query)
+            # this will stop the code right now we don't close it now on windows
+            elif "stop" and "music" in query:
+                yt.close_song()

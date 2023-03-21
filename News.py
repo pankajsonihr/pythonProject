@@ -32,8 +32,8 @@ def get_current_time():
 
 
 def return_date():
-    return"Today is "+ get_formatted_date()
+    return"Today is " + get_formatted_date()
 
 
 def return_time():
-    return"The current time is:" + get_current_time()
+    return"The current time is" + get_current_time()

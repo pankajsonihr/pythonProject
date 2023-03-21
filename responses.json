@@ -2,7 +2,7 @@
   "chat": [
     {
       "tag": "greetings",
-      "patterns": ["hello","how is it going?","hey", "hi", "good day","Greetings", "what's up?"],
+      "patterns": ["hello","how is it going","hey", "hi", "good day","greetings", "what's up?"],
       "responses": ["Hello ", "Hey, I am here", "What can I do for you?"]
     },
     {
@@ -17,23 +17,13 @@
     },
     {
       "tag": "weather",
-      "patterns": ["what is the weather like today?", "is it going to rain today?", "will it be sunny today?"],
+      "patterns": ["what is the weather like today", "is it going to rain today?", "will it be sunny today?"],
       "responses": ["I am not sure, let me check for you", "The current temperature is..."]
     },
     {
       "tag": "jokes",
-      "patterns": ["tell me a joke", "make me laugh", "do you know any jokes"],
-      "responses": ["Why don't scientists trust atoms? Because they make up everything!", "Why did the tomato turn red? Because it saw the salad dressing!"]
-    },
-    {
-      "tag": "jokes_continue",
-      "patterns": ["tell me another one", "I want another joke", "more jokes please"],
-      "responses": ["Sure, here's another one: [insert joke here]."]
-    },
-    {
-      "tag": "jokes_stop",
-      "patterns": ["that's enough jokes", "stop with the jokes", "I don't want to hear any more jokes"],
-      "responses": ["Alright, let me know if you want to hear more jokes later."]
+      "patterns": ["Share a joke with me", "Please make me laugh", "Do you have any jokes to share", "Can you tell me a funny story", "I need a good laugh. Can you make me giggle", "Tell me something humorous", "Can you share a witty one-liner with me", "Recommend a joke for me to tell at a party", "Can you tell me something funny to cheer me up", "Share an underrated joke with me"],
+      "responses": ["Why don't scientists trust atoms? Because they make up everything!", "Why did the tomato turn red? Because it saw the salad dressing!","Why did the tomato turn red? Because it saw the salad dressing!", "What do you get when you cross a snowman and a shark? Frostbite!", "Why did the chicken cross the playground? To get to the other slide!", "What do you get when you cross a snowman and a vampire? Frostbite!", "Why don't scientists trust atoms? Because they make up everything.", "What's the difference between a poorly dressed man on a trampoline and a well-dressed man on a trampoline? Attire.", "Why did the banana go to the doctor? Because it wasn't peeling well.", "What do you get when you cross a pig and a centipede? Bacon and legs.", "Why did the man put his money in the freezer? He wanted cold hard cash!", "Why do birds fly south in the winter? Because it's too far to walk!", "Why did the computer go to the doctor? It had a virus!", "What do you call a fake noodle? An impasta.", "Why did the duck go to the store? To buy some quackers!", "What do you get when you cross a sheep and a kangaroo? A woolly jumper!", "Why don't skeletons fight each other? They don't have the guts.", "What do you call a cow with no legs? Ground beef.", "Why did the scarecrow win an award? Because he was outstanding in his field."]
     },
     {
       "tag": "goodbye",
@@ -64,6 +54,11 @@
       "tag": "book",
       "patterns": ["what book should I read next", "what's your favorite book", "can you recommend a good book"],
       "responses": ["I love reading books by Stephen King", "My favorite book is 1984 by George Orwell", "I would recommend reading The Hunger Games"]
+    },
+    {
+      "tag": "story",
+      "patterns": ["read me a story", "tell me a story", "do you know stories"],
+      "responses": ["Once upon a time there was a story of a lion and a mouse. When a lion was sleeping in the forest, at that time a mouse started jumping on its body for its entertainment. Due to this the lion's sleep was disturbed and he got up and also got angry. Whereas, as soon as he happened to eat the mouse, the mouse requested him to free him and he swore to him that if he ever needed it, he would definitely come to the lion's help. Seeing this adventure of the mouse, the lion laughed a lot and let him go. One day after a few months, some hunters came to the forest to hunt and caught the lion in their net. At the same time, he also tied him to a tree. In such a situation, the troubled lion tried a lot to free himself but could not do anything. In such a situation, he started roaring loudly. His roar was heard far and wide. The rat was passing through the nearby road and when it heard the lion's roar, it realized that the lion was in trouble. As soon as the rat reached the lion, he immediately started gnawing the trap with his sharp teeth and due to which the lion became free in some time and thanked the rat. Later both went towards the forest together.","Story of the greedy lion. On a hot summer day, a lion in the jungle felt very hungry. That's why he started searching for food here and there. After searching for some time, he found a rabbit, but instead of eating it, he left it because he found it too small. Then after searching for some time he found a deer on the way, he followed it but since he was searching for a lot of food, he was tired, due to which he could not catch the deer. When he didn't get it, he thought back to eating that rabbit. Whereas when he came back to the same place, he did not find any rabbit there because he had left there. Now the lion became very sad and had to starve for many days.","The Story of the Needle Tree. Two brothers used to live near a forest. Out of these two, the elder brother used to behave very badly with the younger brother. As if he used to eat all the food of the younger brother every day and also used to wear new clothes of the younger brother himself. One day the elder brother decided that he would go to the nearby forest and bring some wood, which he would later sell in the market. Will sell for some money.\nAs he went into the forest, he cut down many trees, then while cutting down one tree after another, he stumbled upon a magic tree.\nIn this the tree said, oh kind sir, please don't cut my branches. If you leave me then, I will give you a golden apple. He agreed at that time, but greed awakened in his mind. He threatened the tree that if it did not give him more apples, he would cut off the whole trunk.\nIn such a situation, the magical tree, instead of giving apples to the elder brother, showered hundreds of needles on him. Due to this, the elder brother started crying lying on the ground due to pain.\nNow the day started setting slowly, while the younger brother started getting worried. So he went to the forest in search of his elder brother. He found the elder brother lying in pain near that tree, whose body was pierced with hundreds of needles. He felt pity, he reached his brother, slowly removed every needle with love.\nThe elder brother was watching all these things and he was getting angry with himself. Now the elder brother apologizes to the younger brother for ill-treating him and promises to be better. The tree saw the big brother's change of heart and gave him all the golden apples he would need later."]
     }
     ]
   }

@@ -1,10 +1,10 @@
 import time
 import board
-import adafruit_dht		        #Adafruit DHT library for sensor
+import adafruit_dht		        # Adafruit DHT library for sensor
 import psutil
 import sys
-from twython import Twython	    #Twython package to send tweets
-from auth import (		        #Importing keys and token from auth.py file
+from twython import Twython	    # Twython package to send tweets
+from auth import (		        # Importing keys and token from auth.py file
     consumer_key,
     consumer_secret,
     access_token,

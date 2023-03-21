@@ -2,9 +2,9 @@ import random
 
 import speech_recognition as sr
 from datetime import datetime
-import webbrowser
 import json
-import wikipedia
+
+import SMS
 import Wolframalpha as wf
 import News as News
 from Weather import *
@@ -14,21 +14,10 @@ import Youtube as yt
 from SMS import sendEmergencyText
 from Speak import speak
 import Recipe as Recipe
-activationWord = 'hello buddy' #single word
+activationWord = 'hello buddy'  # single word
 
 responses = json.loads(open('responses.json').read())
-def search_wikipedia(query):
-    searchResults = wikipedia.search(query)
-    if not searchResults:
-        print('No wikipedia result')
-        return 'No wikipedia result'
-    try:
-        wikiPage = wikipedia.search(query)
-    except wikipedia.DisambiguationError as error:
-        wikiPage = wikipedia.page(error.options[0])
-    print(wikiPage.title)
-    wikiSummary = str(wikiPage.summary)
-    return wikiSummary
+
 
 def parseCommand():
     listener = sr.Recognizer()
@@ -36,25 +25,19 @@ def parseCommand():
 
     with sr.Microphone() as source:
         listener.energy_threshold = 10000  # it listen low voices as well
-        listener.adjust_for_ambient_noise(source,1.2)
+        listener.adjust_for_ambient_noise(source, 1.2)
         input_speech = listener.listen(source)
 
     try:
         print("Recognizing speech...")
-        query = listener.recognize_google(input_speech, language='en_gb')
-        print(f"The input speech was: {query}")
+        converted_text = listener.recognize_google(input_speech, language='en_gb')
+        print(f"The input speech was: {converted_text}")
     except Exception as exception:
         print('I did not quite catch that')
-        #speak('I did not quite catch that')
+        # speak('I did not quite catch that')
         print(exception)
         return "None"
-    return query
-
-
-def json_response(tag):
-    for item in responses["chat"]:
-        if item["tag"] ==tag:
-           return item["responses"]
+    return converted_text
 
 
 def get_response(input_text):
@@ -69,6 +52,25 @@ def get_response(input_text):
                 if pattern.lower() in input_text.lower():
                     return random.choice(intent['responses'])
     return None
+
+
+def conversation():
+    print("Starting conversation mode")
+    speak("Starting conversation mode")
+    while True:
+        input_text = parseCommand()
+        if input_text is not None:
+            response = get_response(input_text)
+            if response is not None:
+                speak(response)
+            else:
+                speak("I'm sorry, I didn't understand what you said")
+                speak("Exiting conversation mode")
+                break
+        else:
+            break
+
+
 # Main Loop
 if __name__ == '__main__':
     speak('Starting c p i n buddy')
@@ -78,19 +80,28 @@ if __name__ == '__main__':
         if "hi" and "buddy" in query:
             speak('Hi how I can help you.')
 
-            query = parseCommand().lower()
-            speak(get_response(query))
+            query = parseCommand().lower().split()
+
             if "who" and "are" and "you" in query:
-                speak(random.choice(json_response("name")))
+                speak(get_response("What is your name"))
 
-            elif "who" and "are" and "you" in query:
-                speak(random.choice(json_response("name")))
+            elif "conversation" in query:
+                conversation()
 
-            elif "data" in query:
+            elif "date" in query:
+                speak(News.return_date())
+            elif "current" and "time" in query:
+                speak(News.return_date())
+            elif "time" and "now" in query:
                 speak(News.return_date())
 
             elif "say" and "hello" in query:
-                speak(random.choice(json_response("greetings")))
+                speak(get_response("greetings"))
+
+            # We have inserted stories in json file for now.
+            elif "story" in query:
+                speak("Seems like you want to listen a story")
+                speak(get_response("tell me a story"))
 
             # WolframAlpha this will compute math but not much effective in some cases. --Done
             elif query[0] == 'calculate' or query[0] == 'compute':
@@ -132,7 +143,10 @@ if __name__ == '__main__':
                     speak("to change color tell me the color name only")
                     query = parseCommand().lower().split()
                     sb.bulb_commands(query)
-
+            # This location part is also working. --Done
+            elif "location" in query:
+                speak("Seems like you want to find a location please tell me the name of loction only.")
+                SMS.sendLocationOnPhone(parseCommand().lower())
             # Emergency help perfectly working. --Done
             elif "emergency" and "help" in query:
                 speak("Please tell me your emergency message. I will send that to emergency help.")

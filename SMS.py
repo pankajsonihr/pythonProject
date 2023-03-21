@@ -1,7 +1,8 @@
 from twilio.rest import Client
 import GoogleMap as Gm
-account_sid = 'AC10135a8333e2a0574fe98bddecc2a463'
-auth_token = '889fa01d1bbe541cdd254ea991447a39'
+import API
+account_sid = API.tw_account_sid
+auth_token = API.tw_auth_token
 client = Client(account_sid,auth_token)
 
 

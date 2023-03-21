@@ -1,7 +1,8 @@
 import requests
 import datetime
-
-api_address = 'https://newsapi.org/v2/top-headlines?country=ca&apiKey=97850604ddce408fb61e3f4b8268c429'
+import API
+news_api = API.news_api
+api_address = f'https://newsapi.org/v2/top-headlines?country=ca&apiKey={news_api}'
 json_data = requests.get(api_address).json()
 
 

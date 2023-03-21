@@ -1,5 +1,9 @@
 import requests
-api_address ='https://api.openweathermap.org/data/2.5/weather?q=Sudbury&appid=cefeb2855f824dd9383c721096c4638f'
+
+import API
+
+weather_api = API.weather_api
+api_address = f'https://api.openweathermap.org/data/2.5/weather?q=Sudbury&appid={weather_api}'
 json_data = requests.get(api_address).json()
 
 

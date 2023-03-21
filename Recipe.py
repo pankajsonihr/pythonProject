@@ -1,9 +1,10 @@
 import requests
+import API
 
 # https://developer.edamam.com/
 
-APP_ID = "887fd8e8"
-APP_KEY = "49b8012954b66468d56af8a3b188ff4b"
+APP_ID = API.RECIPE_APP_ID
+APP_KEY = API.RECIPE_APP_KEY
 
 endpoint = "https://api.edamam.com/search"
 

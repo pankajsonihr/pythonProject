@@ -1,9 +1,10 @@
 import requests
+import API
 
 
 def search_location_in_city(location):
     # Your Google Maps Places API key
-    api_key = 'AIzaSyCKaiUDsefkPCTxW8SL8vm6NVRZVRd5dbc'
+    api_key = API.map_key
 
     # Set up the URL for the Places API search
     url = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json'

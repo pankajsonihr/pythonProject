@@ -1,6 +1,8 @@
 import wolframalpha
 
-appId = 'P62LKH-UWXGKQ6684'
+import API
+
+appId = API.wolf_appId
 wolframClient = wolframalpha.Client(appId)
 def listOrDict(var):
     if isinstance(var,list):

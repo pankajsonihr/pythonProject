@@ -4,9 +4,10 @@ from Speak import speak
 from meross_iot.http_api import MerossHttpClient
 from meross_iot.manager import MerossManager
 from meross_iot.model.enums import OnlineStatus
+import API
 
-EMAIL = os.environ.get('pankajsonihr@gmail.com') or "pankajsonihr@gmail.com"
-PASSWORD = os.environ.get('9255164735@Rs') or "9255164735@Rs"
+EMAIL = os.environ.get(API.meros_email) or API.meros_email
+PASSWORD = os.environ.get(API.meros_password) or API.meros_password
 
 
 async def bulb_color(color_name):

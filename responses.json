@@ -47,7 +47,7 @@
     },
     {
       "tag": "movies",
-      "patterns": ["what's a good movie to watch?", "have you seen any good movies lately?", "what's your favorite movie?"],
+      "patterns": ["what's a good movie to watch", "have you seen any good movies lately?", "what's your favorite movie?"],
       "responses": ["I heard the new Marvel movie is great", "I recently watched The Godfather and loved it", "My favorite movie is The Shawshank Redemption"]
     },
     {

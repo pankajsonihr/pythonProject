@@ -10,7 +10,7 @@ def sendEmergencyText(text):
     client.messages.create(
         body=text,
         from_='+14302643436',
-        to='+14379885306'
+        to='+17059887877'
     )
 
 
@@ -18,5 +18,5 @@ def sendLocationOnPhone(location):
     client.messages.create(
         body="The Address Link is: " + Gm.search_location_in_city(location),
         from_='+14302643436',
-        to='+14379885306'
+        to='+17059887877'
     )
